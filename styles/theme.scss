@@ -1,0 +1,517 @@
+---
+---
+@import '/assets/styles/normalize.css';
+
+@mixin font-face(
+  $name,
+  $path,
+  $weight,
+  $url: "/assets/fonts/#{$path}-latin-#{$weight}-normal.woff",
+  $format: 'woff'
+) {
+  @font-face {
+    font-family: $name;
+    font-style: normal;
+    font-weight: $weight;
+    font-display: swap;
+    src: url($url) format($format);
+  }
+}
+
+@include font-face('Roboto', 'roboto', 100);
+@include font-face('Roboto', 'roboto', 400);
+@include font-face('Roboto', 'roboto', 700);
+@include font-face('Roboto', 'roboto', 900);
+
+@include font-face('Source Sans Pro', 'source-sans-pro', 700);
+@include font-face('Source Sans Pro', 'source-sans-pro', 600);
+@include font-face('Ubuntu', 'ubuntu', 700);
+
+$white: #ffffff;
+
+// Dark theme
+$header-bg-color-dark: #333333;
+$header-text-color-dark: #eeeeee;
+$header-image-dark: '/assets/images/header-inverted.png';
+
+$body-bg-color-dark: #333333;
+$body-bg-color-offset-dark: #444444;
+$body-text-color-dark: #eeeeee;
+
+$body-link-color-dark: #6bb6e8;
+$body-link-visited-dark: #b08ad9;
+
+$nav-bar-bg-dark: #2b2b2b;
+$nav-bar-text-dark: #eeeeee;
+$nav-bar-link-dark: $body-link-color-dark;
+$nav-bar-link-visited-dark: $body-link-visited-dark;
+$nav-bar-border-dark: #555555;
+
+$post-title-color-dark: #eeeeee;
+$post-link-bg-dark: #333333;
+
+$footer-text-dark: #cccccc;
+$footer-link-dark: #00aaff;
+$footer-border-dark: rgba(255, 255, 255, 0.15);
+
+$paginator-bg-dark: #d7e6f2;
+$paginator-text-dark: #14202a;
+$paginator-border-dark: rgba(31, 42, 51, 0.18);
+$paginator-link-visited-dark: #4d5f73;
+
+// Light theme
+$body-bg-color-light: #f3f7fb;
+$body-panel-light: #ffffff;
+$body-text-light: #1e2a33;
+$body-link-light: #3f678d;
+$body-link-visited-light: #6f5a8d;
+
+$nav-bar-bg-light: #e4edf5;
+$nav-bar-text-light: #1e2a33;
+$nav-bar-link-light: $body-link-light;
+$nav-bar-link-visited-light: $body-link-visited-light;
+$nav-bar-border-light: rgba(30, 42, 51, 0.12);
+
+$border-light: rgba(0, 0, 0, 0.12);
+$border-dark: rgba(255, 255, 255, 0.12);
+
+$header-image-light: '/assets/images/header.png';
+
+$footer-border-light: rgba(0, 0, 0, 0.15);
+$footer-text-light: #222222;
+$footer-link-light: #315f8a;
+
+$paginator-bg-light: #2f4a63;
+$paginator-text-light: #ffffff;
+$paginator-border-light: rgba(243, 247, 251, 0.16);
+$paginator-link-visited-light: #b7c7d6;
+
+$code-bg-light: #f9fafb;
+$code-bg-dark: #2b2b2b;
+
+@mixin theme(
+  $light-color,
+  $dark-color,
+  $property,
+  $default-color: $light-color
+) {
+  & {
+    #{$property}: $default-color;
+  }
+
+  @media (prefers-color-scheme: light) {
+    & {
+      #{$property}: $light-color;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    & {
+      #{$property}: $dark-color;
+    }
+  }
+}
+
+@mixin bg-theme($light-color, $dark-color) {
+  @include theme($light-color, $dark-color, background-color);
+}
+
+@mixin text-theme($light-color, $dark-color) {
+  @include theme($light-color, $dark-color, color);
+}
+
+@mixin border-theme($light-color, $dark-color) {
+  @include theme($light-color, $dark-color, border-color);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  font-size: 18px;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  @include bg-theme($body-bg-color-light, $body-bg-color-dark);
+  @include text-theme($body-text-light, $body-text-color-dark);
+}
+
+a {
+  @include text-theme($body-link-light, $body-link-color-dark);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+  &:visited {
+    @include text-theme(
+      $body-link-visited-light,
+      $body-link-visited-dark
+    );
+  }
+}
+
+p {
+  margin: 0 0 1.5rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0.7rem 0 0 0;
+}
+
+ul {
+  margin: 0.1rem;
+}
+
+#header {
+  position: relative;
+  margin: 0 auto;
+  min-height: clamp(8rem, 18vw, 14rem);
+  background-image: url($header-image-light);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 2rem 2rem clamp(10rem, 20vw, 16rem);
+
+  @media (prefers-color-scheme: dark) {
+    background-image: url($header-image-dark);
+  }
+}
+
+#main-title {
+  font-family: Ubuntu, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(3rem, 6vw, 4.75rem);
+  line-height: 1;
+  margin: 0;
+}
+
+#secondary-title {
+  font-family: 'Source Sans Pro',
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  opacity: 0.90;
+  margin: 0.5rem 0 0;
+}
+
+#nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.03em;
+  font-size: 1.2rem;
+  font-weight: 600;
+  @include bg-theme($nav-bar-bg-light,$nav-bar-bg-dark);
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  @include border-theme($nav-bar-border-light, $nav-bar-border-dark);
+  padding: 0.5rem 0 0.5rem 0;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0;
+    padding: 0 0.5rem 0 0.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .home-link {
+    display: inline-block;
+    padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+    @include text-theme(
+      $body-text-light,
+      $nav-bar-text-dark
+    );
+  }
+}
+
+#main {
+  display: grid;
+  grid-template-columns: minmax(0, 80%) minmax(20%, 1fr);
+  column-gap: 1rem;
+  width: min(94%, 72rem);
+  margin: 2rem auto 4rem;
+}
+
+#content {
+  @include bg-theme($body-panel-light, $body-bg-color-offset-dark);
+  border: 1px solid;
+  @include border-theme($border-light, $border-dark);
+  padding: 0.3rem 2rem 2rem 2rem;
+}
+
+#sidebar {
+  @include bg-theme($body-panel-light, $body-bg-color-offset-dark);
+  border: 1px solid;
+  @include border-theme($border-light, $border-dark);
+  padding: 0 1rem 0 1rem;
+  height: min-content;
+  position: sticky;
+  top: 4.5rem;
+}
+
+@media (max-width: 32rem) {
+  #header {
+    display: none;
+  }
+}
+
+@media (max-width: 48rem) {
+  #main {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 2rem;
+  }
+
+  #content,
+  #sidebar {
+    padding-inline: 1.5rem;
+  }
+
+  #sidebar {
+    position: static;
+  }
+}
+
+.panel {
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid;
+  @include border-theme($border-light, $border-dark);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  h4 {
+    font-family: 'Source Sans Pro',
+      "Helvetica Neue",
+      Helvetica,
+      Arial,
+      sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    margin: 0 0 0.1rem;
+  }
+}
+
+#connect-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-link {
+  display: block;
+  padding: 0 0 0.4rem 0;
+  border-bottom: 1px solid;
+  @include border-theme($border-light, $border-dark);
+  text-decoration: none;
+}
+
+.post-title,
+.post .link {
+  font-family: 'Source Sans Pro',
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  @include text-theme(
+    $body-text-light,
+    $post-title-color-dark
+  );
+
+  margin: 1rem 0 1rem;
+  text-decoration: none;
+}
+
+.meta {
+  margin-bottom: 0.8rem;
+  padding: 0;
+  font-size: 0.9rem;
+  opacity: 0.65;
+}
+
+.post {
+  .thumb, .link, .lede {
+    display: block;
+  }
+
+  .lede {
+    margin: 0 0 0.6rem 0;
+  }
+
+  .thumb {
+    margin: 0 0 0.9rem;
+    max-width: 100%;
+  }
+}
+
+.icon {
+  &.rss {
+    background-color: #ee802f;
+    border-radius: 10%;
+
+    @media (prefers-color-scheme: dark) {
+      filter: invert(1) hue-rotate(180deg);
+    }
+  }
+}
+
+.icon-link {
+  text-decoration: none;
+
+  figure {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 3rem;
+    margin: 0.3rem;
+  }
+
+  figcaption {
+    text-align: center;
+    margin-top: 0.2rem;
+    font-size: 0.8rem;
+  }
+}
+
+.paginator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1rem;
+    border: 1px solid currentColor;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 120ms ease, transform 120ms ease;
+    background: transparent;
+
+    @include theme($paginator-text-light, $paginator-text-dark, color);
+    @include theme($paginator-bg-light, $paginator-bg-dark, background-color);
+    @include theme($paginator-border-light, $paginator-border-dark, border-color);
+
+    &:visited {
+      @include theme($paginator-link-visited-light, $paginator-link-visited-dark, color);
+    }
+  }
+
+  @include text-theme(
+    $paginator-text-light,
+    $paginator-text-dark
+  );
+  @include border-theme(
+    $paginator-border-light,
+    $paginator-border-dark
+  );
+}
+
+#footer {
+  margin-top: 4rem;
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+
+  border-top: 1px solid rgba(127,127,127,.2);
+  .copyright {
+    font-size: 1.1rem;
+  }
+}
+
+.footer-section {
+  h4 {
+    font-family: 'Source Sans Pro',
+      "Helvetica Neue",
+      Helvetica,
+      Arial,
+      sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-size: .85rem;
+    margin: 0 0 1rem;
+  }
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  columns: 2;
+  li {
+    margin-bottom: .25rem;
+  }
+}
+
+blockquote {
+  margin: 2rem 0;
+  padding-left: 1.25rem;
+  border-left: 3px solid currentColor;
+  opacity: 0.8;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1rem;
+  border-radius: 0.4rem;
+
+
+  @include theme(
+    $code-bg-light,
+    $code-bg-dark,
+    background-color
+  );
+
+  @include border-theme(
+    $border-light,
+    $border-dark
+  );
+
+  border: 1px solid;
+}
+

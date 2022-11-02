@@ -1,0 +1,26 @@
+{
+  "name": "barnesian.com",
+  "version": "1.0.0",
+  "description": "source code for barnesian.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrishalebarnes/barnesian.com.git"
+  },
+  "author": "chrishalebarnes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrishalebarnes/barnesian.com/issues"
+  },
+  "homepage": "https://github.com/chrishalebarnes/barnesian.com#readme",
+  "dependencies": {
+    "@fontsource/roboto": "^5.2.10",
+    "@fontsource/source-sans-pro": "^5.2.5",
+    "@fontsource/ubuntu": "^5.2.8",
+    "ionicons": "^8.0.13",
+    "normalize.css": "^8.0.1"
+  }
+}

@@ -1,0 +1,1 @@
+![{{ include.alt }}](/assets/posts/{{ page.permalink }}{{ include.name }})

@@ -1,0 +1,12 @@
+---
+layout: base
+title: Post
+---
+<article class="post">
+  <h3 class="post-title">{{page.title}}</h3>
+  <div class="meta">
+    ► <time datetime="{{ page.date | date: "%Y-%m-%d" }}">{{ page.date | date_to_long_string: "ordinal", "US" }}</time>
+  </div>  
+  {%if page.thumb %}<img src="{{page.thumb.path}}" {% if page.thumb.alt %}alt="{{page.thumb.alt}}"{% endif %} class="thumb"/>{% endif %}
+  {{ content }}
+</article>

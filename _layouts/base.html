@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ page.title | default: "Barnesian.com, personal blog by Chris Barnes"}}">
+    <title>{{ page.title | default: "Barnesian.com"}}</title>
+    <link rel="preload" as="image" href="/assets/images/header.png" media="(prefers-color-scheme: light)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/assets/images/header-inverted.png" media="(prefers-color-scheme: dark)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/assets/icons/logo-rss.svg" type="image/svg+xml" />
+    <link rel="preload" as="image" href="/assets/icons/mail.svg" type="image/svg+xml" />
+    <link rel="preload" as="image" href="/assets/icons/logo-github.svg" type="image/svg+xml" />
+    <link rel="preload" as="style" href="/assets/styles/normalize.css" fetchpriority="high" />
+    <link rel="stylesheet" href="/styles/theme.css" fetchpriority="high" />
+    <link rel="stylesheet" href="/styles/syntax-light.css" media="(prefers-color-scheme: light)" fetchpriority="low" />
+    <link rel="stylesheet" href="/styles/syntax-dark.css" media="(prefers-color-scheme: dark)" fetchpriority="low" />
+  </head>
+  <body>
+    <header id="header">
+      <h1 id="main-title">{{ site.title }}</h1>
+      <h2 id="secondary-title">{{ site.description }}</h2>
+    </header>
+    <nav id="nav">
+      <a class="home-link" href="/">Barnesian ►</a>
+      <ul>
+        <li>
+          <a href="/about">About</a>
+        </li>
+        <li>
+          <a href="/categories">Categories</a>
+        </li>
+        <li>
+          <a href="/archives">Archives</a>
+        </li>
+      </ul>
+    </nav>
+    <main id="main">
+      <section id="content">
+        {{ content }}
+      </section>
+      <aside id="sidebar">
+        <section class="panel subscribe">
+          <h4>Subscribe</h4>
+          <a id="feed-link" class="icon-link" href="/feed.xml">
+            <figure>
+              <img id="rss-icon" class="rss icon" src="/assets/icons/logo-rss.svg" alt="an RSS icon" />
+              <figcaption>RSS</figcaption>
+            </figure>
+          </a>
+        </section>
+        <section class="panel connect">
+          <h4>Connect</h4>
+          <ul id="connect-list">
+            <li>
+              <a id="email-link" class="icon-link" href="mailto:contact@barnesian.com">
+                <figure>
+                  <img class ="email icon" src="/assets/icons/mail.svg" alt="email icon" />
+                  <figcaption>Email</figcaption>
+                </figure>
+              </a>
+            </li>
+            <li>
+              <a id="github-link" class="icon-link" href="https://github.com/chrishalebarnes/">
+                <figure>
+                  <img class ="github icon" src="/assets/icons/logo-github.svg" alt="email icon" />
+                  <figcaption>GitHub</figcaption>
+                </figure>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </aside>
+    </main>
+    <footer id="footer">
+      <div class="copyright">
+        {{ site.copyright }}
+      </div>
+    </footer>
+  </body>
+</html>

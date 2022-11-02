@@ -1,0 +1,85 @@
+title: Barnesian
+email: contact@barnesian.com
+description: >-
+  Software Development and Audio Engineering
+copyright: "© 2011 - 2026 Chris Barnes"
+url: https://barnesian.com
+page_excerpts: true
+sass_dir: styles
+sass:
+  load_paths:
+    - node_modules
+twitter_username: chrishalebarnes
+github_username:  chrishalebarnes
+plugins:
+  - jekyll-feed
+  - jekyll-redirect-from
+  - jekyll-paginate
+paginate: 5
+paginate_path: "posts/:num"
+safe: true
+# GitHub pages allowlist from -> https://pages.github.com/versions/
+whitelist:
+  - jekyll
+  - github-pages-health-check
+  - github-pages
+  - html-pipeline
+  - jekyll-avatar
+  - jekyll-coffeescript
+  - jekyll-commonmark-ghpages
+  - jekyll-default-layout
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-github-metadata
+  - jekyll-include-cache
+  - jekyll-mentions
+  - jekyll-optional-front-matter
+  - jekyll-paginate
+  - jekyll-readme-index
+  - jekyll-redirect-from
+  - jekyll-relative-links
+  - jekyll-remote-theme
+  - jekyll-sass-converter
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-swiss
+  - jekyll-theme-architect
+  - jekyll-theme-cayman
+  - jekyll-theme-dinky
+  - jekyll-theme-hacker
+  - jekyll-theme-leap-day
+  - jekyll-theme-merlot
+  - jekyll-theme-midnight
+  - jekyll-theme-minimal
+  - jekyll-theme-modernist
+  - jekyll-theme-primer
+  - jekyll-theme-slate
+  - jekyll-theme-tactile
+  - jekyll-theme-time-machine
+  - jekyll-titles-from-headings
+  - jemoji
+  - kramdown-parser-gfm
+  - kramdown
+  - liquid
+  - minima
+  - nokogiri
+  - rouge
+  - ruby
+  - safe_yaml
+  - sass
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - Makefile
+include:
+  - demos/
