@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IE8 CSS Hack</title>
+    <style type="text/css">
+        /* IE8 Specific */
+        .square {
+             height: 5em;
+             width: 5em;
+             background-color: red;
+        }
+
+         /* IE9+ */
+        :root .square {
+            height: 5em;
+            width: 5em;
+            background-color: green;
+        }
+     </style>
+</head>
+<body>
+    <h1>IE8 CSS Hack Demo</h1>
+    <div class="square"></div>
+    <p>
+        <a href="http://www.barnesian.com/ie8-specific-css-hack/">Find the blog post here.</a>
+    </p>
+</body>
+</html>
